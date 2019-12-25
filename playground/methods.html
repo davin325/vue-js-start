@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-on 디렉티브로 클릭시 메소드 호출하도록 -->
+      <!-- <button v-on:click="메서드 이름">click me</button> -->
+      <button v-on:click="logText">click me</button>
+
+      <!-- 키보드 조작시  키보드 누르고 뗀 상태: v-on:keyup , 키보드 누른상태 v-on:keypress -->
+      <input type="text" v-on:keypress="logText" />
+
+      <!--event modifier: . 뒤에 enter, esc 등등 사용 가능  ex) v-on:keyup.enter -->
+      <input type="text" v-on:keyup.enter="logText" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          logText: function() {
+            console.log('clicked');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
