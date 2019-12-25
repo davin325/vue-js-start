@@ -28,8 +28,12 @@
           }
         },
 
-        //watch
-        //coputed와 유사하지만 무거운 로직 매번 실행되는게 부담스러운 로직 ex) num 값에 따라 fetchUserByNumber를 불러오는 로직을 넣음
+        // watch
+        //  1. coputed와 유사하지만 무거운 로직 매번 실행되는게 부담스러운 로직
+        //      ex) num 값에 따라 fetchUserByNumber를 불러오는 로직을 넣음
+        //  2. watch의 인자는 newValue:갱신된 값 , oldValue:이전 값
+        //  3. 무거운 동작들 특히 데이터 요청에 적합 데이터 요청을 할때도 methods에 있는 내용들을 엮어주도록
+        // watch 속성과 computed 속성 차이점에 관한 공식 문서 링크 https://vuejs.org/v2/guide/computed.html#ad
         watch: {
           num: function(newValue, oldValue) {
             this.fetchUserByNumber(newValue);
