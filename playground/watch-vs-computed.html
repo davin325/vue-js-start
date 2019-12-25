@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ num }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          num: 10
+        },
+        // computed
+        //  1. data 속성중 num의 값에 2를 곱한 값을 계속 리턴 뷰 내부적으로 계속 계산하는 속성
+        //  2.데이터의 의존성 로직이 실행될때 기본적으로 기준이 되는 값이 data의 num의 속성
+        //  3.빠르게 계산하는 장점, 단순한 값을 계산
+        computed: {
+          doubleNum: function() {
+            return this.num * 2;
+          }
+        },
+
+        //watch
+        //coputed와 유사하지만 무거운 로직 매번 실행되는게 부담스러운 로직 ex) num 값에 따라 fetchUserByNumber를 불러오는 로직을 넣음
+        watch: {
+          num: function(newValue, oldValue) {
+            this.fetchUserByNumber(newValue);
+          }
+        },
+        methods: {
+          fetchUserByNumber: function(num) {
+            // console.log(num);
+            axios.get(num);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
